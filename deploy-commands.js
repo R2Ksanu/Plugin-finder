@@ -1,12 +1,15 @@
-const { REST, Routes } = require('discord.js');
-const fs = require('node:fs');
-require('dotenv').config();
+// deploy-commands.js
+import { REST, Routes } from 'discord.js';
+import fs from 'node:fs';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+  const { default: command } = await import(`./commands/${file}`);
   commands.push(command.data.toJSON());
 }
 

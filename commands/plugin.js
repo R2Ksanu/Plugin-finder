@@ -1,7 +1,8 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const axios = require('axios');
+// plugin.js
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import axios from 'axios';
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('plugin')
     .setDescription('Search for a Minecraft plugin across Modrinth, Hangar, and SpigotMC')
